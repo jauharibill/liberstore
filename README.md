@@ -1,16 +1,76 @@
 # LIBERSTORE
 adalah website penjualan buku yang menggunakan framework `slim`
 
+## Requirement
 
-# Get Book Data
+to use this web application you must provide at least `PHP 5.5`, so you can use `PHP 5.5` or Higher
 
-Register
+## API Reference
+
+Register [POST]
         
-       /buyer/register
-       
-Login 
+       /user/register
+- Require param
 
-       /buyer/login
+   * username
+   * email
+   * password
+   * retype password
+       
+Login [POST]
+
+       /user/login
+- Require param
+
+   * username
+   * password
+
+Get list books [GET]
+
+       /user/get_book_list
+       
+Get data profile [POST] 
+       
+       /user/find_profile/{token}
+       
+Get detail book with token [GET]
+
+       /user/get_detail_book/{token}/{code_book}
+       
+Update profile user [POST]
+        
+       /user/update_profile    
+- Require param
+
+   * fullname
+   * phone
+   * place
+   * born
+   * postal_code
+   * token
+
+Check profile [GET]
+        
+       /user/check_profile/{token}
+       
+Buy book [POST]
+
+        /user/buy_book
+- Require param
+
+   * token
+   * code_book
+
+Get my book [GET]
+
+        /user/get_mybook/{token}
+
+Activate account [POST]
+        
+        /user/activate_account
+- Require param
+
+   * activation_code
 
 
 ## Install the Application
