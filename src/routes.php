@@ -632,7 +632,6 @@ $app->get("/user/get_data_profile",function($req,$res,$args){
 $app->post("/user/get_detail_book",function($req,$res,$args){
 	$query = connectDB();
 	$data = $req->getParsedBody();
-	$token = $data['token'];
 	$code_book = $data['code_book'];
 	$sql = $query->query("SELECT title_book,code_book,author,price,stock,photos,publisher FROM book WHERE code_book='$code_book'")->fetchAll(PDO::FETCH_OBJ);
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
@@ -641,12 +640,11 @@ $app->post("/user/get_detail_book",function($req,$res,$args){
 
 //get detail book using token
 
-$app->get("/user/get_detail_book/{token}/{code_book}",function($req,$res,$args){
+$app->get("/user/get_detail_book/{code_book}",function($req,$res,$args){
 	$query = connectDB();
 	// $data = $req->getParsedBody();
-	$token = $args['token'];
 	$code_book = $args['code_book'];
-	$sql = $query->query("SELECT title_book,code_book,author,price,stock,photos FROM book,account WHERE token='$token' and code_book='$code_book'")->fetchAll(PDO::FETCH_OBJ);
+	$sql = $query->query("SELECT title_book,code_book,author,price,stock,photos, publisher FROM book WHERE code_book='$code_book'")->fetchAll(PDO::FETCH_OBJ);
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
 	return $response;
 });
