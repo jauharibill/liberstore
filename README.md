@@ -78,7 +78,7 @@ Activate account [POST]
    * activation_code
 
 
-## Install the Application
+## How to Install
 
 Clone Repository
 
