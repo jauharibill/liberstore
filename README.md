@@ -1,5 +1,11 @@
 # LIBERSTORE
-adalah website penjualan buku yang menggunakan framework `slim`
+liberstore is onlineshop that provide book that user can buy, this website built by framework `slim` . this website architect provide 3 point
+
+* admin
+* web desktop
+* rest api
+
+so you can colaborate/upgrade this website to mobile apps too. enjoy it dude!
 
 ## Requirement
 
@@ -15,7 +21,6 @@ Register [POST]
    * username
    * email
    * password
-   * retype password
        
 Login [POST]
 
@@ -88,10 +93,8 @@ Run Server
        php -S localhost:8000 [enter]
 
 
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
 That's it! Now go build something cool.
 
+Regard
+
+./billxcode
