@@ -8,13 +8,21 @@ adalah website penjualan buku yang menggunakan framework slim
 
 ## Install the Application
 
-* git clone [this repo]
-* composer update
-* php -S localhost:8000 [enter]
+* Clone Repository
+
+       git clone [this repo]
+    
+* Update Composer
+   
+       composer update
+       
+* Run Server
+    
+       php -S localhost:8000 [enter]
 
 Run this command from the directory in which you want to install your new Slim Framework application.
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
+     php composer.phar create-project slim/slim-skeleton [my-app-name]
 
 Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
 
