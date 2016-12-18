@@ -1,11 +1,16 @@
-<<<<<<< HEAD
-# Slim Framework 3 Skeleton Application
+# LIBERSTORE
+adalah website penjualan buku yang menggunakan framework slim
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+# Get Book Data
+
+
 
 ## Install the Application
+
+* git clone [this repo]
+* composer update
+* php -S localhost:8000 [enter]
 
 Run this command from the directory in which you want to install your new Slim Framework application.
 
@@ -17,7 +22,4 @@ Replace `[my-app-name]` with the desired directory name for your new application
 * Ensure `logs/` is web writeable.
 
 That's it! Now go build something cool.
-=======
-# liberstore
-Liber Store adalah toko buku online
->>>>>>> 9f8b6607d35305d19dfc70a1a87b7a9a154a7d02
+
