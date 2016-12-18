@@ -1,5 +1,5 @@
 # LIBERSTORE
-liberstore is onlineshop that provide book that user can buy, this website built by framework `slim` . this website architect provide 3 point
+liberstore is onlineshop base on bookstore so that user can buy some books there, this website built by framework `slim` . this website architect provide 3 point
 
 * admin
 * web desktop
