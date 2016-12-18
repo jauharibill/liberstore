@@ -8,15 +8,15 @@ adalah website penjualan buku yang menggunakan framework slim
 
 ## Install the Application
 
-* Clone Repository
+Clone Repository
 
        git clone [this repo]
     
-* Update Composer
+Update Composer
    
        composer update
        
-* Run Server
+Run Server
     
        php -S localhost:8000 [enter]
 
