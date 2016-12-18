@@ -1,0 +1,35 @@
+{% extends "dashboard.twig" %}
+{% block subcontent %}
+	       <div class="x_content">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Activation Code</th>
+                        <th>Verify Account</th>
+                      </tr>
+                    </thead>
+                    <tbody>   
+                    {% for datauser in datausers %}
+                    <tr>
+                      <td>{{loop.index}}</td>
+                      <td>{{datauser.username}}</td>
+                      <td>{{datauser.password}}</td>
+                      <td>{{datauser.token}}</td>
+                      {% if (datauser.status==0) %}
+
+                      <td><a href="/admin/verified/{{datauser.username}}" class="btn btn-danger">Unverified</a></td>
+                      {% else %}
+                      <td><a href="/admin/unverified/{{datauser.username}}" class="btn btn-success">Verified</a></td>
+
+                      {% endif %}
+                    </tr>                   
+                    {% endfor %}
+                    </tbody>
+                  </table>
+<center>            <div id="paging" class="btn-group">
+                      </div></center>
+                </div>
+{% endblock %}

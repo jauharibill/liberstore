@@ -1,0 +1,23 @@
+{% extends "user/core/skeleton.twig" %}
+
+{% block maincontent %}
+
+<div id="main" class="main">
+<div class="x_panel">
+<div class="x_title">{{title}}</div>
+<div class="x_content">
+	<div class="form">
+		<form class="form-horizontal" name="form_update_profile" action="/buyer/update_profile" method="post">
+			<div class="form-group"><input type="text" name="fullname" placeholder="Full Name" class="form-control col-md-7 col-xs-12" required="required" value="{{dataprofile.full_name}}"></div>
+			<div class="form-group"><input type="text" name="address1" placeholder="Address 1" class="form-control col-md-7 col-xs-12" required="required" value="{{dataprofile.address1}}"></div>
+			<div class="form-group"><input type="text" name="address2" placeholder="Address 2" class="form-control col-md-7 col-xs-12" required="required" value="{{dataprofile.address2}}" ></div>
+			<div class="form-group"><input type="number" name="phone" placeholder="Phone" class="form-control col-md-7 col-xs-12" required="required" value="{{dataprofile.phone}}"></div>
+			<div class="form-group"><input type="number" name="postal_code" placeholder="Postal Code" class="form-control col-md-7 col-xs-12" required="required" value="{{dataprofile.postal_code}}"></div>
+			<div class="form-group"><button class="btn btn-primary pull-right" type="submit">Submit</button><button type="reset" class="btn btn-primary pull-left">Reset</button></div>
+		</form>
+	</div>
+</div></div>
+
+</div>
+
+{% endblock %}

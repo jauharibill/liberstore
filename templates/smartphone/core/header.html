@@ -1,0 +1,101 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->	
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>pinball website for Iphone, Android &nbsp; Smartphone Mobile Website Template | Home :: w3layouts</title>
+		<link href="/smartphone/css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		
+  		<link rel="stylesheet" href="/smartphone/css/main.css">
+  		
+		<script src="/smartphone/js/jquery.min.js"></script>
+		
+		<link type="text/css" rel="stylesheet" href="/smartphone/css/jquery.mmenu.all.css" />
+		<script type="text/javascript" src="/smartphone/js/jquery.mmenu.js"></script>
+			<script type="text/javascript">
+				//	The menu on the left
+				$(function() {
+					$('nav#menu-left').mmenu();
+				});
+		</script>
+		
+		<script>
+		$(function() {
+			var pull 		= $('#pull');
+				menu 		= $('.search-bar form');
+				menuHeight	= menu.height();
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+			$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 320 && menu.is(':hidden')) {
+        			menu.removeAttr('style');
+        		}
+    		});
+		});
+	</script>
+		
+	</head>
+	<body>
+		
+			<div id="page">
+					<div id="header">
+						<a class="navicon" href="#menu-left"> </a>
+						<div class="logo">
+						<a href="index.html"><img src="/smartphone/images/logo.png" alt="" /></a>
+						</div>
+						<div class="search-bar">
+							<a href="#" id="pull"><span> </span></a>
+							<form class="search-form">
+								<input type="text">
+							</form>
+						</div>
+						<div class="clear"> </div>
+					</div>
+					<nav id="menu-left">
+						<ul>
+							<li><a href="#"><span>home</span></a></li>
+							<li><a href="#"><span>About</span></a></li>
+							<li><a href="#"><span>Works</span></a></li>
+							<li><a href="#"><span>Clients</span></a></li>
+							<li><a href="#"><span>Blog</span></a></li>
+							<li><a href="contact.html"><span>Contact</span></a></li>
+							<div class="clear"> </div>
+						</ul>
+					</nav>
+				</div>
+
+		<div class="content">
+			<div class="wrap">
+			 <div id="main" role="main">
+{% block maincontent %}
+
+
+{% endblock %}
+			  </div>
+			</div>
+		</div>
+	
+		  <script src="/smartphone/js/jquery.imagesloaded.js"></script>
+		  <script src="/smartphone/js/jquery.wookmark.js"></script>
+		  <script type="text/javascript" src="/smartphone/js/infinity-scroll.js"></script>
+	
+		<!-- <div class="footer">
+			<p>Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+		</div> -->
+	
+	</body>
+</html>
+

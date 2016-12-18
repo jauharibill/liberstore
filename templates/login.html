@@ -1,0 +1,42 @@
+{% extends "core/skeleton.html" %}
+
+{% block title %}Login Admin{% endblock %}
+{% block maincontent %}
+
+  <div class="">
+    <a class="hiddenanchor" id="toregister"></a>
+    <a class="hiddenanchor" id="tologin"></a>
+
+    <div id="wrapper">
+      <div id="login" class="animate form">
+        <section class="login_content">
+          <form method="post" action="/admin/login_admin" name="form_login_admin">
+            <h1>Login Form</h1>
+            <div>
+              <input type="text" class="form-control" placeholder="Username" required="" name="username" />
+            </div>
+            <div>
+              <input type="password" class="form-control" placeholder="Password" required="" name="password"/>
+            </div>
+            <div>
+              <button class="btn btn-default submit">Log in</button>
+              {# <a class="reset_pass" href="#">Lost your password?</a> #}
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+              <div class="clearfix"></div>
+              <br />
+              <div>
+                <h1><i class="fa fa-book" style="font-size: 26px;"></i> {% block footer %}Library Book{% endblock %}</h1>
+              </div>
+            </div>
+          </form>
+          <!-- form -->
+        </section>
+        <!-- content -->
+      </div>
+    </div>
+  </div>
+
+
+        {% endblock %}

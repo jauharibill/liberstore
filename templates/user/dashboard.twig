@@ -1,0 +1,56 @@
+{% extends "user/core/skeleton.twig" %}
+
+{% block maincontent %}
+ <div id="main">
+ 
+ <div class="row">
+ <div class="col-md-6">
+ <div class="x_panel"><div class="form-group">
+   <div class="x_title">
+My Book
+   </div>
+     <table id="table-mybook" class="table table-hover">
+       <tr>
+       <td>ID</td>
+       <td>Cover</td>
+       <td>Title</td>
+       <td>Detail</td>
+       </tr>
+ 
+       <tr>
+     {% for mybook in mybooks %}
+ 
+ 
+         <td>{{loop.index}}</td>
+         <td><img src="/{{mybook.photos}}" width="100px"></td>
+         <td>{{mybook.title_book}}</td>
+         <td><a href="/buyer/dashboard/book/detail/{{mybook.idbook}}" class="btn btn-primary">Detail</a></td>
+         
+       </tr>
+       {% endfor %}
+     </table></div></div>
+ 	</div>	
+ 	<div class="col-md-6">
+ 		<div class="x_panel"><div class="form-group">
+         <div class="x_title">Books Order</div>
+           <table id="table-book" class="table table-hover">
+             <tr>
+               <td>ID</td>   
+              <td>Cover</td>
+              <td>Title</td>
+               <td>Detail</td>
+             </tr>
+             {% for book in books %}
+             <tr>
+               <td>{{loop.index}}</td>
+              <td><img src="/{{book.photos}}" width="100px"></td>
+               <td>{{book.title_book}}</td>
+               <td><a href="/buyer/dashboard/book/detail/{{book.idbook}}" class="btn btn-primary">Detail</a></td>
+             </tr>
+             {% endfor %}
+           </table></div></div>
+
+ 	</div>
+ 
+ </div></div>
+{% endblock %}

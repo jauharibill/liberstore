@@ -1,0 +1,59 @@
+{% extends "smartphone/core/skeleton.html" %}
+{% block maincontent %}
+
+	<div class="single-page col-md-12">
+		<div class="artical-content">
+		<div class="col-md-4"><img src="/{{book.photos}}" style="width: 400px"></div>
+			<div class="col-md-5"><a href="/product/{{book.idbook}}/{{book.author}}/{{book.title_book}}" class="title_book">{{book.title_book}}</a></div>
+			<div class="col-md-7"><span><i class="fa fa-money"></i> Rp. {{book.price|number_format}}</span>  <span><i class="fa fa-user"></i> <a href="/author/{{book.author}}" class="author">{{book.author}}</a></span>  <span><i class="fa fa-barcode"></i> {{book.code_book}}</span>  <span>
+
+			{% if(username!=null) %}
+			<a href="/buyer/buy/{{book.idbook}}/{{username}}" class="btn btn-success pull-right">Buy this Book</a>
+			{% else %}
+			<a href="#" class="btn btn-success pull-right" onclick="alert('Warning : You must Login to buy this book')">Buy this Book</a>
+			{% endif %}
+			</span></div>
+			<div class="col-md-7"><p>{{book.sinopsis}}</p></div>
+			<div class="artical-links col-md-7">
+				<ul>
+					<li><a href="#"><i class="fa fa-user"></i> <span>admin</span></a></li>
+					<li><a href="#"><i class="fa fa-comment"></i> <span>No comments</span></a></li>
+					<li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i> Twiiter</a></li>
+
+				</ul>
+			</div>
+		</div>
+			<div class="col-md-7">
+				<div class="grids_of_2">
+					<h2>Comments</h2>
+					<div class="artical-commentbox">
+						<h2>Leave a Comment</h2>
+						<div class="table-form">
+							<form action="#" method="post" name="post_comment">
+								<div>
+									<label>Name<span>*</span></label>
+									<input type="text" value=" ">
+								</div>
+								<div>
+									<label>Email<span>*</span></label>
+									<input type="text" value=" ">
+								</div>
+								<div>
+									<label>Your Comment<span>*</span></label>
+									<textarea> </textarea>	
+								</div>
+							</form>
+							<input type="submit" value="submit">
+
+						</div>
+						<div class="clear"> </div>
+					</div>			
+				</div>
+			</div>
+
+	</div>
+
+
+
+{% endblock %}

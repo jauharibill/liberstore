@@ -1,0 +1,13 @@
+{% extends "smartphone/core/skeleton.html" %}
+{% block maincontent %}
+
+	<div class="single-page col-md-12">
+		<div class="artical-content">
+		<div class="col-md-4"><img src="/{{book.photos}}"></div>
+			<div class="col-md-5"><a href="/product/{{book.idbook}}/{{book.author}}/{{book.title_book}}" class="title_book">{{book.title_book}}</a></div>
+			<div class="col-md-7"><span><i class="fa fa-money"></i> Rp. {{book.price|number_format}}</span>  <span><i class="fa fa-user"></i> <a href="/author/{{book.author}}" class="author">{{book.author}}</a></span>  <span><i class="fa fa-barcode"></i> {{book.code_book}}</span> </div>
+			<div class="col-md-7"><p>{{book.sinopsis}}</p></div>
+		</div>
+	</div>
+
+{% endblock %}

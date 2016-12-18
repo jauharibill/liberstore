@@ -1,0 +1,149 @@
+{% extends "form-skeleton.twig" %}
+{% block sub_form_content %} 
+
+   <div class="x_content">
+                  <br />
+                  <form id="form_upload_book" data-parsley-validate class="form-horizontal form-label-left" method="post" action="/admin/simpan_buku" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Title Book<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="title_book" placeholder="title book" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.title_book}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Code Book<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="code_book" placeholder="code book" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.code_book}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Price <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" name="price" placeholder="Price" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.price}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Author<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="author" placeholder="Author" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.author}}">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Publisher<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" name="publisher" placeholder="Publisher" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.publisher}}">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Stock<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="number" name="stock" placeholder="Stock" required="required" class="form-control col-md-7 col-xs-12" value="{{databook.stock}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Upload Image<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <input type="file" name="uploads" placeholder="Uploads" required="required" class="form-control col-md-7 col-xs-12">
+                      </div>
+                    </div>
+                  <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sinopsis<span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <textarea name="sinopsis" class="form-control col-md-7 col-xs-12">{{databook.sinopsis}}</textarea>
+                      </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                      <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <button type="reset" class="btn btn-primary">Cancel</button>
+                        <button type="submit" class="btn btn-success" id="btn-upload">Submit</button>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+
+{% endblock %}
+
+
+{% block sub_table_content %}
+                <div class="x_content">
+
+                  <table id="table_book" class="table table-striped responsive-utilities jambo_table bulk_action">
+                    <thead>
+                      <tr class="headings">
+                        <th>
+                          ID
+                        </th>
+                        <th class="column-title">Code Book </th>
+                        <th class="column-title">Title Book </th>
+                        <th class="column-title">Price</th>
+                        <th class="column-title">Publisher</th>
+                        <th class="column-title">Stock</th>
+                        <th class="column-title"><span class="nobr">Edit</span>
+                        <th class="column-title"><span class="nobr">Delete</span>
+                        </th>
+                        <th class="bulk-actions" colspan="7">
+                          <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="table-value">
+                    {% for book in databook %}
+                          <tr><td>{{loop.index}}</td><td>{{book.code_book}}</td><td>{{book.title_book}}</td><td>{{book.price}}</td><td>{{book.publisher}}</td><td>{{book.stock}}</td><td><a href="/admin/editbook/{{book.idbook}}" class="btn btn-primary">Edit</a></td><td><a href="/admin/book/delete/{{book.idbook}}" class="btn btn-danger">Delete</a></td></tr>
+                    {% endfor %}
+                            </tbody>
+
+                  </table>
+                            <center>            <div id="paging" class="btn-group">
+                      </div></center>
+                </div>
+                <script type="text/javascript">
+                function showpage(param){
+                      $(".even").hide();
+                   $("."+param).show();
+                   
+                }
+                  $(function(){
+                    $.get("http://localhost/libraryBook/server/public/get_book_data",function(response,success){
+                      console.log(response);
+                      var obj=JSON.parse(response);
+                      var num_row = obj.num_rows;
+                      var page = 1;
+                      var param=1;
+                      var rowperpage =10;
+                      var paging = Math.ceil(num_row/rowperpage);
+                      for (var i = 1; i <=paging; i++) {
+                        $("#paging").append("<button class='btn btn-info' type='button' onclick=showpage('page"+i+"')>"+i+"</button>")
+                      }
+                      for (var i = 0; i <obj.data_token.length; i++){
+                        
+                      $("#table-value").append("<tr class='even pointer page"+page+"'><td class='a-center'><input type='checkbox' class='flat' name='table_records'></td><td class=''>"+obj.data_token[i].code_book+"</td><td class=''>"+obj.data_token[i].title_book+"</td><td class=' '>"+obj.data_token[i].price+"</td><td class='last'>"+obj.data_token[i].publisher+"</td><td class='last'>"+obj.data_token[i].stock+"</td><td class='last'><a href='#'>View</a></td></tr>"); 
+                      
+                      if (param>=rowperpage) {
+                        page++;
+                        param=0;
+                        }
+                        param++;
+                      }
+                      $(".even").hide();
+                   $(".page1").show();
+                   
+
+                    });
+                  });
+
+                </script>
+{% endblock %}

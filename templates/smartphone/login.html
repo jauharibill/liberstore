@@ -1,0 +1,19 @@
+{% extends "smartphone/core/skeleton.html" %}
+
+{% block maincontent %}
+			 <div id="main" role="main" class="main">
+
+<div class="x_panel">
+<div class="x_title">Login</div>
+
+<div class="x_content">
+<form action="/buyer/login" method="post" class="form-horizontal">
+	<div class="form-group"><input type="text" name="username" placeholder="Username" class="form-control col-md-7 col-xs-12" required></div>
+	<div class="form-group"><input type="password" name="password" placeholder="Password" class="form-control" required></div>
+
+	<div class="form-group"><a href="/register" class="label">Doesnt have account? Register here</a></div>
+	<div class="form-group"><button class="btn btn-warning pull-left" type="reset">Reset</button><button class="btn btn-primary pull-right">Login</button></div>
+</form></div></div>
+
+</div>			   
+			   {% endblock %}

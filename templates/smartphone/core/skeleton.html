@@ -1,0 +1,139 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->	
+{% block main %}
+<!DOCTYPE HTML>
+<html>
+{% block header %}
+	<head>
+		<title>{{title}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" /> -->
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		
+  		<link rel="stylesheet" type="text/css" href="/fonts/css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="/smartphone/css/jquery.mmenu.all.css" />
+
+		<link href="/smartphone/css/style.css" rel='stylesheet' type='text/css' />
+  		<link rel="stylesheet" href="/smartphone/css/main.css">
+
+
+		<script src="/smartphone/js/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="/smartphone/js/jquery.mmenu.js"></script>
+			<script type="text/javascript">
+				//	The menu on the left
+				$(function() {
+					$('nav#menu-left').mmenu();
+				});
+		</script>
+		
+		<script>
+		$(function() {
+			var pull 		= $('#pull');
+
+				menu 		= $('.search-bar div');
+
+				menuHeight	= menu.height();
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+
+				$("#searchbook").focus();
+
+			});
+			$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 320 && menu.is(':hidden')) {
+        			menu.removeAttr('style');
+        		}
+    		});
+		});
+	</script>
+
+	<script>
+	$(function(){
+		
+		$("#searchbook").on("keypress",function($key){
+			if ($key.key=="Enter") {
+				$title = $("#searchbook").val();
+			window.location = "/search/book/"+$title;	
+			}
+			
+		});	
+	});
+	</script>
+
+		
+	</head>
+	{% endblock %}
+	<body>
+
+			<div id="page">
+					<div id="header">
+						<a class="navicon" href="#menu-left" style="color: #99A7C0"><span class="fa fa-bars fa-2x"></span> </a>
+						<div class="logo">
+						<a href="/" class="title_logo"><span class="title">Liber <span class="sub_title">Store</span></span></a>
+						</div>
+						<div class="search-bar">
+							<a href="#" id="pull"><span class="fa fa-search fa-2x"> </span></a>
+							<div class="search-form">
+								<input type="text" name="booktitle" placeholder="Book Title" style="color: black" id="searchbook">
+							</div>
+
+						</div>
+						<div class="clear"> </div>
+					</div>
+					<nav id="menu-left">
+
+										<ul>
+											<li><a href="/"><i class="fa fa-home pull-right"></i><span>Home</span></a></li>
+											{% if(paramsession==0) %}
+											<li>
+											<span style="text-align: center">Doesnt have account ?</span>
+											<a href="/login" class="btn btn-primary" style="width: 50%; float: left;"><i class="fa fa-sign-in pull-right"></i><span>Login</span></a>
+											<a href="/register" class="btn btn-warning" style="width: 50%"><i class="fa fa-users pull-right"></i><span>Register</span></a>
+											</li>
+											{% else %}
+											<li><a href="/buyer/dashboard"><i class="fa fa-globe pull-right"></i><span>Dashboard</span></a></li>
+											<li><a href="/buyer/form_update_profile"><i class="fa fa-user pull-right"></i><span>Update Profile</span></a></li>
+											<li><a href="/buyer/logout"><i class="fa fa-sign-out pull-right"></i><span>Logout</span></a></li>
+											{% endif %}
+											<li><a href="/about"><i class="fa fa-info pull-right"></i><span>About</span></a></li>
+											<li><a href="/how"><i class="fa fa-info pull-right"></i><span>How to Buy ?</span></a></li>
+											<div class="clear"> </div>
+										</ul>
+
+					</nav>
+				</div>
+
+		<div class="content">
+			<div class="wrap">
+{% block maincontent %}
+
+
+
+
+{% endblock %}
+			</div>
+		</div>
+	
+		  <script src="/smartphone/js/jquery.imagesloaded.js"></script>
+		  <script src="/smartphone/js/jquery.wookmark.js"></script>
+		  <script type="text/javascript" src="/smartphone/js/infinity-scroll.js"></script>
+	
+		<!-- <div class="footer">
+			<p>Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+		</div> -->
+	
+	</body>
+</html>
+
+{% endblock %}

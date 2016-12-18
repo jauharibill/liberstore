@@ -1,0 +1,42 @@
+{% extends "dashboard.twig" %}
+{% block subcontent %}
+
+	</script>
+	       <div class="x_content">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Cover</th>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Publisher</th>
+                        <th>Date</th>
+                        <th>Username</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="databody">  
+                    {% for book in books%}
+                    <tr>
+                      <td>{{loop.index}}</td>
+                      <td><img src="/{{book.photos}}" width="100px"></td>
+                      <td>{{book.code_book}}</td>
+                      <td>{{book.title_book}}</td>
+                      <td>{{book.publisher}}</td>
+                      <td>{{book.date_release}}</td>
+                      <td>{{book.username}}</td>
+                      {% if(book.status==1) %}
+                      <td><a href="/admin/book_verification/unverified/{{book.idmy}}" class="btn btn-primary">Verified</a></td>
+                      {% else %}
+                      <td><a href="/admin/book_verification/verified/{{book.idmy}}" class="btn btn-warning">UnVerified</a></td>
+                      {% endif %}
+                      <td><a href="/admin/bookorder/delete/{{book.idmy}}" class="btn btn-danger">Delete</a></td>
+                    </tr>                    
+                    {% endfor %}
+                    </tbody>
+                  </table>
+<center>            <div id="paging" class="btn-group">
+                      </div></center>
+                </div>
+{% endblock %}

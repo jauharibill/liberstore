@@ -1,0 +1,10 @@
+{% extends "core/parent.html" %}
+{% block title%}Form Login{% endblock%}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+{% endblock %}
+{% block content %}<form action="/admin/check_login" name="form_login" class="form" method="post">
+<input type="text" name="username" placeholder="Username">
+<input type="password" name="password" placeholder="Password">
+<button type="submit">Login</button></form>
+{% endblock %}

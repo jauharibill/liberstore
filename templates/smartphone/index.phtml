@@ -1,0 +1,46 @@
+{% extends "smartphone/core/skeleton.html" %}
+
+{% block maincontent %}
+			 <div id="main" role="main">
+			      <ul id="tiles">
+			        <!-- These are our grid blocks -->
+
+			        {% if(books!="404") %}
+			        {% for book in books %}
+			        <li>
+			        	<div class="img-book"><a href="/product/{{book.idbook}}/{{book.author}}/{{book.title_book}}"><img src="/{{book.photos}}"></a></div>
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<div><h3><a href="/product/{{book.idbook}}/{{book.author}}/{{book.title_book}}">{{book.title_book}}</a></h3></div>
+
+			        			<div><i class="fa fa-money"></i> Rp. {{book.price | number_format }}</div>
+				        		<div><i class="fa fa-user"></i> <a href="/author/{{book.author}}" class="author">{{book.author}}</a></div>
+				        		<div><p>{{book.sinopsis| slice(0,200) }}</p></div>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div>
+
+			        				<span class="col-lg-12">
+			        				{% if(username!=null) %}
+			        				<a class="btn btn-success btn-block" href="/buyer/buy/{{book.idbook}}/{{username}}">Book This</a>
+			        				{% else %}
+			        				<a class="btn btn-success btn-block" onclick="alert('Warning : You Must Login to buy this book')" >Book This</a>
+			        				{% endif %}
+			        				</span>
+
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			       {% endfor %}
+
+			       {% else %}
+			       <center><h1><strong>404</strong> Oops, Iam sorry. your book is not available.</h1></center>
+			       {% endif %}
+			       
+
+			        <!-- End of grid blocks -->
+			      </ul>
+			   </div>
+			   {% endblock %}
