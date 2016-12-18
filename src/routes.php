@@ -514,6 +514,9 @@ $app->post("/user/register",function($req,$res,$args){
 });
 
 
+
+//login using post method
+
 $app->post("/user/login",function($req,$res,$args){
 	$query = connectDB();
 	$data = $req->getParsedBody();
@@ -528,6 +531,9 @@ $app->post("/user/login",function($req,$res,$args){
 		return false;
 	}*/
 });
+
+//login but in get method
+
 $app->get("/user/login/{username}/{password}",function($req,$res,$args){
 	$query = connectDB();
 	// $data = $req->getParsedBody();
@@ -538,6 +544,7 @@ $app->get("/user/login/{username}/{password}",function($req,$res,$args){
 	return $response;
 	
 });
+
 
 $app->post("/admin/simpan_buku",function($req,$res,$args){
 	$query = connectDB();
@@ -605,15 +612,23 @@ $app->post("/admin/update_buku",function($req,$res,$args){
 });
 
 
+//get book list
+
 $app->get("/user/get_book_list",function($req,$res,$args){
 	$query = connectDB();
 	$sql = $query->query("SELECT title_book,code_book,price,sinopsis,photos FROM book WHERE 1")->fetchAll(PDO::FETCH_OBJ);
 	return json_encode($sql);
 });
+
+//get data profile
+
 $app->get("/user/get_data_profile",function($req,$res,$args){
 	$query = connectDB();
 	$sql = $query->query("SELECT full_name,date_profile,place,phone,postal_code,account_idaccount,token FROM profile,account WHERE idaccount=account_idaccount ");
 });
+
+//get detail book
+
 $app->post("/user/get_detail_book",function($req,$res,$args){
 	$query = connectDB();
 	$data = $req->getParsedBody();
@@ -623,6 +638,9 @@ $app->post("/user/get_detail_book",function($req,$res,$args){
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
 	return $response;
 });
+
+//get detail book using token
+
 $app->get("/user/get_detail_book/{token}/{code_book}",function($req,$res,$args){
 	$query = connectDB();
 	// $data = $req->getParsedBody();
@@ -633,9 +651,14 @@ $app->get("/user/get_detail_book/{token}/{code_book}",function($req,$res,$args){
 	return $response;
 });
 
+
 $app->get("/user/form",function($req,$res,$args){
 	$this->renderer->render($res,"form.phtml",$args);
 });
+
+
+//upload photo
+
 $app->post("/user/upload_photo",function($req,$res,$args){
 $storage = new \Upload\Storage\FileSystem('assets/');
 $file = new \Upload\File('foo', $storage);
@@ -660,6 +683,10 @@ try {
     $errors = $file->getErrors();
 }
 });
+
+
+//user update profile
+
 $app->post("/user/update_profile",function($req,$res,$args){
 	$data = $req->getParsedBody();
 	$query = connectDB();
@@ -678,6 +705,9 @@ $app->post("/user/update_profile",function($req,$res,$args){
 	// echo $sql;
 	return check_boolean($sql);
 });
+
+//check profile if exist or not
+
 $app->get("/user/check_profile/{token}",function($req,$res,$args){
 	$query = connectDB();
 	$token = $args['token'];
@@ -686,6 +716,9 @@ $app->get("/user/check_profile/{token}",function($req,$res,$args){
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
 	return $response;
 });
+
+//get data profile but must provide token
+
 $app->get("/user/find_profile/{token}",function($req,$res,$args){
 	$query = connectDB();
 	$token = $args['token'];
@@ -694,6 +727,9 @@ $app->get("/user/find_profile/{token}",function($req,$res,$args){
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
 	return $response;
 });
+
+//buy some book
+
 $app->post("/user/buy_book", function($req,$res,$args){
 	$data = $req->getParsedBody();
 	$code_book = $data['code_book'];
@@ -703,12 +739,29 @@ $app->post("/user/buy_book", function($req,$res,$args){
 	$response = '{"result":"'.check_boolean($sql).'","data_token":'.json_encode($sql).'}';
 	return $response;
 });
+
+//activate account
+
 $app->post("/user/activate_account",function($req,$res,$args){
 	
 	$data = $req->getParsedBody();
 	$activation_code = $data['activation_code'];
 	$query = connectDB();
-	$sql = $query->exec("UPDATE profile SET status=1 WHERE activation_code='$activation_code'");
+	// return "UPDATE profile SET status=1 WHERE activation_code='$activation_code'";
+	$sql = $query->exec("UPDATE account SET status=1 WHERE token='$activation_code'");
+	$response = '{"result":"'.check_boolean($sql).'"}';
+	return $response;
+
+});
+
+//activate account with get method
+
+$app->get("/user/activate_account/{activation_code}",function($req,$res,$args){
+	
+	// $data = $req->getParsedBody();
+	$activation_code = $args['activation_code'];
+	$query = connectDB();
+	$sql = $query->exec("UPDATE account SET status=1 WHERE token='$activation_code'");
 	$response = '{"result":"'.check_boolean($sql).'"}';
 	return $response;
 
@@ -721,6 +774,8 @@ $app->get("/user/activation_code",function(){
 	}
 	echo $activation_code;
 });
+
+//get my book
 $app->get("/user/get_mybook/{token}",function($req,$res,$args){
 	$query = connectDB();
 	$token = $args['token'];
